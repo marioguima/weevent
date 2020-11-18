@@ -441,4 +441,113 @@ return [
     */
 
     'livewire' => false,
+
+    /**
+     * This package contains Laravel Blade Components for
+     * AdminLTE 3 free Boostrap admin panel UI Kit.
+     * Since, blade components are only available after Laravel 7,
+     * thus only laravel 7.x+ can use this package.
+     */
+
+    [
+        'name' => 'AdminLTE-Components-DG',
+        'active' => true,
+        'files' => [
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/css/select2.min.css',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/css/select2-bootstrap4.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/select2/js/select2.min.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-custom-file-input/bs-custom-file-input.min.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/moment/moment.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/summernote/summernote-bs4.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/summernote/summernote-bs4.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-select/css/bootstrap-select.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bs-select/js/bootstrap-select.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-tags-input/bootstrap-tagsinput.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-tags-input/bootstrap-tagsinput.js',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/daterangepicker/daterangepicker.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/daterangepicker/daterangepicker.css',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+            ],
+            [
+                'type' => 'css',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-slider/css/bootstrap-slider.min.css',
+            ],
+            [
+                'type' => 'js',
+                'asset' => true,
+                'location' => '/vendor/dg-plugins/bootstrap-slider/js/bootstrap-slider.min.js',
+            ],
+        ],
+    ],
 ];
