@@ -73,4 +73,21 @@ class User extends Authenticatable
     {
         return 'user/profile';
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function($model) {
+            $model->uuid = \Str::uuid();
+        });
+    }
+
+    public function getRouteKeyName() {
+        return 'uuid';
+    }
+
+    public function events()
+    {
+        return $this->hasMany('App\Models\Event', 'user_id', 'id');
+    }
 }

@@ -14,17 +14,23 @@ use App\Http\Controllers\Admin\EventController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-Route::get('/', function () {
-    return view('login');
+Route::get('setlocale/{locale}',function($lang){
+    \Session::put('locale',$lang);
+    return redirect()->back();
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+Route::group(['middleware'=> 'language'],function ()
+{
+    Route::get('/', function () {
+        return view('index');
+    });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
-    Route::resource('admin/events', EventController::class)->names('event');
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+        Route::resource('admin/events', EventController::class)->names('event');
+    });
+
 });

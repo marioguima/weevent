@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class EventController extends Controller
 {
@@ -15,7 +17,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('admin.events.listAllEvents');
+        // dd(User::find(1)->events);
+        $events = Event::all();
+        $dataTablesTranslations = __('adminlte::datatables');
+        return view('admin.events.listAllEvents', [
+            'events' => $events,
+            'dtTranslations' => $dataTablesTranslations
+        ]);
     }
 
     /**
@@ -25,7 +33,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.events.newEvent');
     }
 
     /**
@@ -36,7 +44,28 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new Event();
+        $event->user_id = Auth::id();
+        $event->title = $request->title;
+        $event->embedded_video = $request->embedded_video;
+        $event->save();
+
+        /**
+         * y = Uma representação do ano com dois dígitos / 99 ou 03
+         * m = Representação numérica de um mês, com zero à esquerda / 01 a 12
+         * d = Dia do mês, 2 dígitos com zero à esquerda / 01 até 31
+         * M = Uma representação textual curta de um mês, três letras / Jan a Dec
+         * S = Sufixo ordinal inglês para o dia do mês, 2 caracteres / st, nd, rd ou th.
+         * H = Formato 24-horas de uma hora com zero à esquerda / 00 até 23
+         * i = Minutos com zero à esquerda / 00 até 59
+         * s = Segundos, com zero à esquerda / 00 até 59
+         * z = O dia do ano (iniciando em 0)
+         */
+        // $date = Date('ymdMSHisz');
+        // $event->public_id = "string".$event->id;
+        // $event->save();
+
+        return redirect()->route('event.index');
     }
 
     /**
@@ -47,7 +76,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('admin.events.showEvent', [
+            'event' => $event,
+        ]);
     }
 
     /**
@@ -58,7 +89,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('admin.events.editEvent', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -70,7 +103,11 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->title = $request->title;
+        $event->embedded_video = $request->embedded_video;
+        $event->save();
+
+        return redirect()->route('event.index');
     }
 
     /**
@@ -81,6 +118,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('event.index');
     }
 }

@@ -15,6 +15,8 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->uuid('uuid');
             $table->string('title');
             $table->text('embedded_video');
             $table->timestamps();

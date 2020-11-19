@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('admin.main')
 
 @section('title', 'Dashboard')
 
