@@ -237,6 +237,6 @@ return [
         'es'
     ],
 
-    'host_app_client' => env('HOST_APP_CLIENT', 'https://live.weevent.online'),
+    'host_app_client_url' => env('HOST_APP_CLIENT_URL', 'https://live.weevent.online'),
 
 ];

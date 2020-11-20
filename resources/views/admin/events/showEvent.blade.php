@@ -31,7 +31,7 @@
       <div class="form-group">
         <label>{{ trans('adminlte::weevent.link_event_client') }}</label>
         <input name="link_client" type="text" class="form-control"
-          value="{{ config('app.host_app_client') }}/event/{{ $event->uuid }}" readonly>
+          value="{{ config('app.host_app_client_url') }}/event/{{ $event->uuid }}" readonly>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
       <div class="form-group">
         <label>{{ trans('adminlte::weevent.link_event_admin') }}</label>
         <input name="link_admin" type="text" class="form-control"
-          value="{{ config('app.host_app_client') }}/admin/{{ $event->uuid_admin }}" readonly>
+          value="{{ config('app.host_app_client_url') }}/admin/{{ $event->uuid_admin }}" readonly>
       </div>
     </div>
   </div>
