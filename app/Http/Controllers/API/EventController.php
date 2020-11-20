@@ -30,28 +30,25 @@ class EventController extends Controller
     // }
 
     /**
-     * Display the specified resource.
+     * Display the specified event to client.
      *
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-
-    // public function show($role, Event $event)
-    // {
-    //     if (in_array($role, ['admin', 'client'])) {
-    //         return ['role'=>$role,'event' => $event];
-    //     } else {
-    //         abort(404);
-    //     }
-    // }
-
     public function client(Event $event)
     {
         return $event;
     }
+
+    /**
+     * Display the specified event to admin.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
     public function admin(Event $event)
     {
-        return $event;
+        return $event->with('user')->get();
     }
 
     // /**
