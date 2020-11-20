@@ -39,9 +39,9 @@
           <div class="col-sm-12">
             <!-- textarea -->
             <div class="form-group">
-              <label>Textarea</label>
-              <textarea name="embedded_video" class="form-control" rows="3"
-                placeholder="Enter ...">{{ $event->embedded_video }}</textarea>
+              <label>{{ trans('adminlte::weevent.youtube_video_id') }}</label>
+              <input name="youtube_video_id" type="text" class="form-control" placeholder="Enter ..."
+                value="{{ $event->youtube_video_id }}">
             </div>
           </div>
         </div>

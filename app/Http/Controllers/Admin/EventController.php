@@ -47,7 +47,7 @@ class EventController extends Controller
         $event = new Event();
         $event->user_id = Auth::id();
         $event->title = $request->title;
-        $event->embedded_video = $request->embedded_video;
+        $event->youtube_video_id = $request->youtube_video_id;
         $event->save();
 
         /**
@@ -104,7 +104,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $event->title = $request->title;
-        $event->embedded_video = $request->embedded_video;
+        $event->youtube_video_id = $request->youtube_video_id;
         $event->save();
 
         return redirect()->route('event.index');

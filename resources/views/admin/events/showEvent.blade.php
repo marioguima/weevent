@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="col">
-      {!! $event->embedded_video !!}
+      {!! $event->youtube_video_id !!}
     </div>
   </div>
   <div class="row">

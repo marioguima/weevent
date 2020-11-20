@@ -9,4 +9,5 @@ return [
     'new_event'                   => 'New event',
     'action'                      => 'Action',
     'title_of_event'              => 'Event title',
+    'youtube_video_id'            => 'Youtube video id'
 ];

@@ -38,9 +38,8 @@
           <div class="col-sm-12">
             <!-- textarea -->
             <div class="form-group">
-              <label>Textarea</label>
-              <textarea name="embedded_video" class="form-control" rows="3"
-                placeholder="Enter ..."><iframe width="560" height="315" src="https://www.youtube.com/embed/7zFQRuCX9-k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></textarea>
+              <label>{{ trans('adminlte::weevent.youtube_video_id') }}</label>
+              <input name="youtube_video_id" type="text" class="form-control" placeholder="Enter ..." value="vCRJ-I3a_S0">
             </div>
           </div>
         </div>

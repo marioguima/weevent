@@ -16,9 +16,10 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index();
+            $table->uuid('uuid_admin')->index();
             $table->string('title');
-            $table->text('embedded_video');
+            $table->text('youtube_video_id');
             $table->timestamps();
         });
     }
