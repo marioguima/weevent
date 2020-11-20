@@ -12,7 +12,7 @@
 
   <div class="row mb-2">
     <div class="col-12">
-      <h1>@lang('adminlte::weevent.event')</h1>
+      <h1>@lang('adminlte::weevent.event') [{{ $event->title }}]</h1>
     </div>
   </div>
 @stop
@@ -21,17 +21,27 @@
 
   <div class="row">
     <div class="col">
-      <h3>{{ $event->title }}</h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $event->youtube_video_id }}" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      {!! $event->youtube_video_id !!}
+      <div class="form-group">
+        <label>{{ trans('adminlte::weevent.link_event_client') }}</label>
+        <input name="link_client" type="text" class="form-control"
+          value="{{ config('app.host_app_client') }}/event/{{ $event->uuid }}" readonly>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      Criado: {{ date('d/m/Y H:i', strtotime($event->created_at)) }}
+      <div class="form-group">
+        <label>{{ trans('adminlte::weevent.link_event_admin') }}</label>
+        <input name="link_admin" type="text" class="form-control"
+          value="{{ config('app.host_app_client') }}/admin/{{ $event->uuid_admin }}" readonly>
+      </div>
     </div>
   </div>
 

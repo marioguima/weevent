@@ -9,5 +9,7 @@ return [
     'new_event'                   => 'New event',
     'action'                      => 'Action',
     'title_of_event'              => 'Event title',
-    'youtube_video_id'            => 'Youtube video id'
+    'youtube_video_id'            => 'Youtube video id',
+    'link_event_client'           => 'Event link for client',
+    'link_event_admin'            => 'Event link for administrator',
 ];
