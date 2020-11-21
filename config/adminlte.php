@@ -45,7 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    // 'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>We</b>Event',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -133,7 +134,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-1',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -445,7 +446,7 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#93-livewire
     */
 
-    'livewire' => false,
+    'livewire' => true,
 
     /**
      * This package contains Laravel Blade Components for
