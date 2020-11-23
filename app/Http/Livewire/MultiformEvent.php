@@ -7,16 +7,20 @@ use Livewire\Component;
 class MultiformEvent extends Component
 {
     // informações básicas
-    public $title;
-    public $video_platform;
-    public $video_id;
+    public $title = '';
+    public $video_platform = 'youtube';
+    public $video_id = '';
 
     // Apresentadores e colaboradores
-    public $participants = [];
+    public $participants = array(
+        array('full_name' => '',
+              'email' => '',
+              'role' => '',
+              'photo' => '',
+              )
+        );
 
     public $step = 0;
-
-    public $event;
 
     private $stepActions = [
         'next1',
@@ -25,7 +29,10 @@ class MultiformEvent extends Component
     ];
 
     // Guarda a sessão que o usuário está em cada passo
-    public $steps_active_session = ['basic', '', ''];
+    public $steps_active_session = [
+        'information' => 'basic',
+        'scheduler' => '',
+    ];
 
     protected $listeners = ['activeSession' => 'setActiveSession'];
 
@@ -35,9 +42,6 @@ class MultiformEvent extends Component
     }
 
     public function mount() {
-        $this->step = 0;
-        $this->video_platform = 'youtube';
-
         // Primeiro verificamos se há algum valor antigo para os elementos do formulário que queremos renderizar.
         // Quando um usuário enviou um formulário com valores que não passaram na validação, exibimos esses valores antigos.
         // $this->participants = old('http_client_participants', $this->participants);
@@ -52,10 +56,6 @@ class MultiformEvent extends Component
 
     public function jumpToStep($step) {
         $this->step = $step;
-    }
-
-    public function changeVideoPlatform($videoPlatform) {
-        $this->video_platform = $videoPlatform;
     }
 
     public function decreaseStep() {
@@ -99,12 +99,15 @@ class MultiformEvent extends Component
             return;
         }
 
-        $this->participants[] = [
-            'full_name' => '',
-            'email' => '',
-            'role' => '',
-            'photo' => ''
-        ];
+        // cria uma chave autoincrement virtual
+        // serve apenas para garantir um valor único para wire.model="$participant.{{ $seq_id }}.seq_id"
+        // $seq_id = (count($this->participants) > 0) ? (end($this->participants)['seq_id'] + 1) : 0;
+        array_push($this->participants, array('full_name' => '',
+                                              'email' => '',
+                                              'role' => '',
+                                              'photo' => '',
+                                            )
+        );
     }
 
     /**
@@ -115,6 +118,7 @@ class MultiformEvent extends Component
     {
         unset($this->participants[$i]);
 
+        // array_values — Retorna todos os valores de um array
         $this->participants = array_values($this->participants);
     }
 

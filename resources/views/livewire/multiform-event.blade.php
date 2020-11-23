@@ -26,44 +26,48 @@
 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade @if ($step == 0) active show @endif" id="home" role="tabpanel" aria-labelledby="home-tab">
-          {{-- Evento --}}
-          <div class="card @if ($step == 0 && $steps_active_session[0] != 'basic') collapsed-card @endif" id="cardStep_0_Basic" card-default>
-            <div class="card-header">
-              <h3 class="card-title">Básica</h3>
 
+          {{-- Information - Basic --}}
+          <div class="card @if ($step == 0 && $steps_active_session['information'] != 'basic') collapsed-card @endif" id="cardStep_0_Basic" card-default>
+
+            <!-- card-header (Basic) -->
+            <div class="card-header">
+              <h3 class="card-title">{{ trans('adminlte::weevent.basic') }}</h3>
+
+              <!-- card-tools -->
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas @if ($step == 0 && $steps_active_session[0] != 'basic') fa-plus @else fa-minus @endif"></i>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas @if ($step == 0 && $steps_active_session['information'] != 'basic') fa-plus @else fa-minus @endif"></i>
                 </button>
               </div>
-              <!-- /.card-tools -->
             </div>
-            <!-- /.card-header -->
-            <div class="card-body" style="display: @if ($step == 0 && $steps_active_session[0] != 'basic') none; @else block; @endif">
+
+            <div class="card-body" style="display: @if ($step == 0 && $steps_active_session['information'] != 'basic') none; @else block; @endif">
+
+              <!-- Title -->
               <div class="row">
                 <div class="col-sm-12">
-                  <!-- text input -->
                   <div class="form-group label-floating is-empty">
                     <label>{{ trans('adminlte::weevent.title_of_event') }}</label>
-                    <input wire:model.lazy="title" type="text" class="form-control" placeholder="Informe o título ...">
+                    <input wire:model.defer="title" type="text" class="form-control" placeholder="Informe o título ...">
                     @error('title')<small class="form-text text-danger">{{ $message }}</small>@enderror
                   </div>
                 </div>
               </div>
-              <div class="row">
 
-                {{-- video platform --}}
+              {{-- video platform --}}
+              <div class="row">
                 <div class="col-md-5 col-lg-4">
                   <div class="form-group">
                     <label for="">{{ trans('adminlte::weevent.video_platform') }}</label><br />
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                      <label class="btn btn-info @if($video_platform=='youtube' ) active @endif">
-                        <input type="radio" wire:click="changeVideoPlatform('youtube')" name="video_platform" id="youtube" value="youtube" autocomplete="off" checked> Youtube
+                    <div class="btn-group btn-group-toggle">
+                      <label class="btn btn-info @if($video_platform=='youtube') active @endif">
+                        <input type="radio" wire:model="video_platform" name="video_platform" id="youtube" value="youtube" autocomplete="off" checked> Youtube
                       </label>
-                      <label class="btn btn-info @if($video_platform=='vimeo' ) active @endif">
-                        <input type="radio" wire:click="changeVideoPlatform('vimeo')" name="video_platform" id="vimeo" value="vimeo" autocomplete="off"> Vimeo
+                      <label class="btn btn-info @if($video_platform=='vimeo') active @endif">
+                        <input type="radio" wire:model="video_platform" name="video_platform" id="vimeo" value="vimeo" autocomplete="off"> Vimeo
                       </label>
-                      <label class="btn btn-info @if($video_platform=='wistia' ) active @endif">
-                        <input type="radio" wire:click="changeVideoPlatform('wistia')" name="video_platform" id="youtube" value="wistia" autocomplete="off"> Wistia
+                      <label class="btn btn-info @if($video_platform=='wistia') active @endif">
+                        <input type="radio" wire:model="video_platform" name="video_platform" id="youtube" value="wistia" autocomplete="off"> Wistia
                       </label>
                     </div>
                   </div>
@@ -73,29 +77,32 @@
                 <div class="col-md-7 col-lg-8">
                   <div class="form-group">
                     <label>{{ trans('adminlte::weevent.platform_video_id', ['platform' => $video_platform]) }}</label>
-                    <input wire:model.lazy="video_id" type="text" class="form-control" placeholder="Identificador do vídeo ...">
+                    <input wire:model.defer="video_id" type="text" class="form-control" placeholder="Identificador do vídeo ...">
                     @error('video_id')<small class="form-text text-danger">{{ $message }}</small>@enderror
                   </div>
                 </div>
 
               </div>
             </div>
-            <!-- /.card-body -->
+
           </div>
 
-          {{-- Apresentadores --}}
-          <div class="card @if ($step == 0 && $steps_active_session[0] != 'participants') collapsed-card @endif" id="cardStep_0_Participants">
-            <div class="card-header">
-              <h3 class="card-title">Apresentadores e colaboradores</h3>
+          {{-- Information - Participants and collaborators --}}
+          <div class="card @if ($step == 0 && $steps_active_session['information'] != 'participants') collapsed-card @endif" id="cardStep_0_Participants">
 
+            <!-- card-header (Presenters and collaborators) -->
+            <div class="card-header">
+              <h3 class="card-title">{{ trans('adminlte::weevent.presenters_collaborators') }}</h3>
+
+              {{-- card-tools --}}
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas @if ($step == 0 && $steps_active_session[0] != 'participants') fa-plus @else fa-minus @endif"></i>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas @if ($step == 0 && $steps_active_session['information'] != 'participants') fa-plus @else fa-minus @endif"></i>
                 </button>
               </div>
-              <!-- /.card-tools -->
             </div>
-            <!-- /.card-header -->
-            <div class="card-body" style="display: @if ($step == 0 && $steps_active_session[0] != 'participants') none; @else block; @endif">
+
+            {{-- List of participants --}}
+            <div class="card-body" style="display: @if ($step == 0 && $steps_active_session['information'] != 'participants') none; @else block; @endif">
 
               {{-- cabeçalho --}}
               <div class="row mb-1">
@@ -127,62 +134,51 @@
               </div>
 
               {{-- participants --}}
-              <div class="row">
-
-                @foreach ($participants as $i => $participant)
+              @foreach ($participants as $participant)
+              <div class="row" wire:key="post-field-{{ $loop->index }}">
 
                 {{-- full name --}}
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input type="text" wire:model.lazy="participants.{{ $i }}.full_name" class="form-control" placeholder="{{ @trans('adminlte::weevent.full_name_placeholder') }} ...">
-                    @error("participants.{$i}.full_name")<small class="form-text text-danger">{{ $errors->first("participants.{$i}.full_name") }}</small>@enderror
+                    <input type="text" wire:model.defer="participants.{{ $loop->index }}.full_name" class="form-control" placeholder="{{ @trans('adminlte::weevent.full_name_placeholder') }} ...">
+                    @error("participants.{$loop->index}.full_name")<small class="form-text text-danger">{{ $errors->first("participants.{$loop->index}.full_name") }}</small>@enderror
                   </div>
                 </div>
 
                 {{-- email --}}
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <input type="text" wire:model.lazy="participants.{{ $i }}.email" class="form-control" placeholder="{{ @trans('adminlte::weevent.email_placeholder') }} ...">
-                    @error("participants.{$i}.email")<small class="form-text text-danger">{{ $errors->first("participants.{$i}.email") }}</small>@enderror
+                    <input type="text" wire:model.defer="participants.{{ $loop->index }}.email" class="form-control" placeholder="{{ @trans('adminlte::weevent.email_placeholder') }} ...">
+                    @error("participants.{$loop->index}.email")<small class="form-text text-danger">{{ $errors->first("participants.{$loop->index}.email") }}</small>@enderror
                   </div>
                 </div>
 
                 {{-- role --}}
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input type="text" wire:model.lazy="participants.{{ $i }}.role" class="form-control" placeholder="{{ @trans('adminlte::weevent.role_placeholder') }} ...">
-                    @error("participants.{$i}.role")<small class="form-text text-danger">{{ $errors->first("participants.{$i}.role") }}</small>@enderror
+                    <input type="text" wire:model.defer="participants.{{ $loop->index }}.role" class="form-control" placeholder="{{ @trans('adminlte::weevent.role_placeholder') }} ...">
+                    @error("participants.{$loop->index}.role")<small class="form-text text-danger">{{ $errors->first("participants.{$loop->index}.role") }}</small>@enderror
                   </div>
                 </div>
 
                 {{-- photo --}}
                 <div class="col-sm-1">
                   <div class="form-group">
-                    <input type="text" wire:model.lazy="participants.{{ $i }}.photo" class="form-control">
-                    @error("participants.{$i}.photo")<small class="form-text text-danger">{{ $errors->first("participants.{$i}.photo") }}</small>@enderror
+                    <input type="text" wire:model.defer="participants.{{ $loop->index }}.photo" class="form-control">
+                    @error("participants.{$loop->index}.photo")<small class="form-text text-danger">{{ $errors->first("participants.{$loop->index}.photo") }}</small>@enderror
                   </div>
                 </div>
 
                 {{-- remove --}}
                 <div class="col-xs-1">
-                  <div class="form-group">
-                    <a href="#" wire:click.prevent="removeParticipant({{ $i }})" class="btn p-0 text-danger"><i class="fas fa-trash"></i></a>
-                  </div>
+                  <a href="#" wire:click.prevent="addParticipant()" class="btn p-0 text-gray @if(!$this->canAddMoreParticipants()) disabled @endif"><i class="fas fa-user-plus"></i></a>
+                  @if ($loop->index > 0)
+                  <a href="#" wire:click.prevent="removeParticipant({{ $loop->index }})" class="btn p-0 text-gray"><i class="fas fa-user-minus"></i></a>
+                  @endif
                 </div>
 
-                @endforeach
-
               </div>
-
-              @if ($this->canAddMoreParticipants())
-              <div class="row">
-                <div class="col">
-                  <div wire:click.prevent="addParticipant" class="btn btn-secondary mr-4">
-                    Add participant
-                  </div>
-                </div>
-              </div>
-              @endif
+              @endforeach
 
             </div>
             <!-- /.card-body -->
@@ -421,20 +417,23 @@
 <script>
   $(document).ready(function() {
     $('#cardStep_0_Basic, #cardStep_0_Participants').on('collapsed.lte.cardwidget', function() {
-      //   Livewire.emit('activeSession', ['session' => '']);
-      window.livewire.emit('activeSession', '');
+      @this.set('steps_active_session.information', '');
+      //   emitindo evento para o componente
+      //   window.livewire.emit('activeSession', '');
     })
 
     $('#cardStep_0_Basic').on('expanded.lte.cardwidget', function() {
       $('#cardStep_0_Participants').CardWidget('collapse');
-      window.livewire.emit('activeSession', 'basic');
-      //   Livewire.emit('activeSession', ['session' => 'basic']);
+      @this.set('steps_active_session.information', 'basic');
+      //   emitindo evento para o componente
+      //   window.livewire.emit('activeSession', 'basic');
     })
 
     $('#cardStep_0_Participants').on('expanded.lte.cardwidget', function() {
       $('#cardStep_0_Basic').CardWidget('collapse');
-      window.livewire.emit('activeSession', 'participants');
-      //   Livewire.emit('activeSession', ['session' => 'participants']);
+      @this.set('steps_active_session.information', 'participants');
+      //   emitindo evento para o componente
+      //   window.livewire.emit('activeSession', 'participants');
     })
 
   });

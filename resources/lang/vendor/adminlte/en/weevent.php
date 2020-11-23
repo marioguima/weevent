@@ -14,10 +14,12 @@ return [
     'link_event_client'           => 'Event link for client',
     'link_event_admin'            => 'Event link for administrator',
     'full_name'                   => 'Full name',
-    'full_name_placeholder'       => 'Enter the first name and last name',
+    'full_name_placeholder'       => 'First and last name',
     'email'                       => 'Email address',
     'email_placeholder'           => 'Enter the email',
     'role'                        => 'Role',
     'role_placeholder'            => 'Enter the role',
     'photo'                       => 'Photo',
+    'basic'                       => 'Basic',
+    'presenters_collaborators'    => 'Presenters and collaborators',
 ];

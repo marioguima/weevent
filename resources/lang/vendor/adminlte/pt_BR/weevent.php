@@ -20,4 +20,6 @@ return [
     'role'                        => 'Função',
     'role_placeholder'            => 'Informe a função',
     'photo'                       => 'Foto',
+    'basic'                       => 'Básica',
+    'presenters_collaborators'    => 'Apresentadores e colaboradores',
 ];
